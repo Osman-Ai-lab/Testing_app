@@ -30,13 +30,15 @@
     html, body { 
       background-color: var(--bg); 
       margin: 0; 
-      padding: 0; 
+      padding: 40px 0; /* Changed padding to allow scrolling */
       width: 100vw; 
-      height: 100vh; 
-      overflow: hidden; 
+      min-height: 100vh; /* Changed height to min-height for scrolling */
+      overflow-x: hidden; /* Only hide horizontal overflow */
+      overflow-y: auto; /* Enable vertical scrolling */
       display: flex; 
+      flex-direction: column; /* Stack vertically to fit images */
       align-items: center; 
-      justify-content: center; 
+      justify-content: flex-start; /* Start from top instead of center */
       font-family: var(--font-sans); 
       color: var(--text-main); 
       /* Smooth transition for theme colors */
@@ -176,6 +178,30 @@
       box-shadow: 0 0 8px var(--accent); 
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     } 
+
+    /* Image Gallery Styles */
+    .image-gallery {
+      margin-top: 40px;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 560px;
+      max-width: 90vw;
+      z-index: 1;
+    }
+
+    .image-gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s ease, transform 0.2s ease;
+    }
+    
+    .image-gallery img:hover {
+      transform: translateY(-4px);
+    }
   </style>
 </head>
 <body>
@@ -202,6 +228,11 @@
       </div>
     </div>
   </main>
+
+  <div class="image-gallery">
+    <img src="/imageone.google.com (1).png" alt="Cipher Veil Screenshot" />
+    <img src="/image2.png" alt="Lamborghini Photo" />
+  </div>
 
   <script>
     function toggleTheme() {
