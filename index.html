@@ -1,13 +1,142 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vercel Test</title>
+  <style>
+    :root { 
+      --bg: #0f172a; 
+      --surface: #1e293b; 
+      --border: #334155; 
+      --accent: #10b981; 
+      --text-main: #f8fafc; 
+      --text-muted: #94a3b8; 
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif; 
+      --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; 
+    } 
+    html, body { 
+      background-color: var(--bg); 
+      margin: 0; 
+      padding: 0; 
+      width: 100vw; 
+      height: 100vh; 
+      overflow: hidden; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-family: var(--font-sans); 
+      color: var(--text-main); 
+    } 
+    .blueprint-grid { 
+      position: absolute; 
+      inset: 0; 
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); 
+      background-size: 32px 32px; 
+      opacity: 0.15; 
+      pointer-events: none; 
+    } 
+    .content-card { 
+      position: relative; 
+      width: 560px;
+      max-width: 90vw; 
+      background: var(--surface); 
+      border: 1px solid var(--border); 
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); 
+      padding: 48px; 
+      text-align: center; 
+      z-index: 1; 
+    } 
+    .badge { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px; 
+      font-family: var(--font-mono); 
+      font-size: 11px; 
+      font-weight: 600; 
+      text-transform: uppercase; 
+      letter-spacing: 0.05em; 
+      color: var(--accent); 
+      border: 1px solid var(--accent); 
+      padding: 4px 12px; 
+      border-radius: 2px; 
+      margin-bottom: 24px; 
+      background: rgba(16, 185, 129, 0.05); 
+    } 
+    h1 { 
+      font-size: 36px; 
+      font-weight: 800; 
+      margin: 0 0 8px 0; 
+      letter-spacing: -0.02em; 
+    } 
+    .version-info { 
+      font-size: 18px; 
+      color: var(--text-muted); 
+      margin-bottom: 40px; 
+      font-weight: 400; 
+    } 
+    .btn-primary { 
+      background-color: var(--accent); 
+      color: var(--bg); 
+      border: none; 
+      font-family: var(--font-sans); 
+      font-size: 14px; 
+      font-weight: 700; 
+      padding: 14px 32px; 
+      border-radius: 4px; 
+      cursor: pointer; 
+      text-transform: uppercase; 
+      letter-spacing: 0.025em; 
+      transition: transform 0.1s; 
+    } 
+    .btn-primary:active { 
+      transform: scale(0.98); 
+    } 
+    .status-footer { 
+      margin-top: 48px; 
+      border-top: 1px solid var(--border); 
+      padding-top: 24px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    } 
+    .status-item { 
+      font-family: var(--font-mono); 
+      font-size: 10px; 
+      color: var(--text-muted); 
+      text-transform: uppercase; 
+      letter-spacing: 0.1em; 
+      display: flex; 
+      align-items: center; 
+      gap: 6px; 
+    } 
+    .dot { 
+      width: 6px; 
+      height: 6px; 
+      background: var(--accent); 
+      border-radius: 50%; 
+      box-shadow: 0 0 8px var(--accent); 
+    } 
+  </style>
+</head>
+<body>
+  <div class="blueprint-grid"></div>
+  <main class="content-card">
+    <div class="badge">Deployment Probe: Active</div>
+    <h1>Testing Vercel Auto-Update</h1>
+    <p class="version-info">Current Version: 1.0</p>
+    <button class="btn-primary" onclick="alert('App is running successfully!')">Check Live Status</button>
+    <div class="status-footer">
+      <div class="status-item">
+        <span class="dot"></span> Live Environment
+      </div>
+      <div class="status-item">
+        Commit Hash: d7a1f2e
+      </div>
+      <div class="status-item">
+        Region: WAS1
+      </div>
+    </div>
+  </main>
+</body>
 </html>
-
