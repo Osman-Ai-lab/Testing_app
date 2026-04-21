@@ -6,6 +6,7 @@
   <title>Vercel Test</title>
   <style>
     :root { 
+      /* Dark Mode (Default Theme) */
       --bg: #0f172a; 
       --surface: #1e293b; 
       --border: #334155; 
@@ -15,6 +16,17 @@
       --font-sans: 'Inter', system-ui, -apple-system, sans-serif; 
       --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; 
     } 
+
+    /* Light Mode Overrides */
+    .light-mode {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --accent: #059669; /* Slightly darker green for contrast */
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+    }
+
     html, body { 
       background-color: var(--bg); 
       margin: 0; 
@@ -27,7 +39,10 @@
       justify-content: center; 
       font-family: var(--font-sans); 
       color: var(--text-main); 
+      /* Smooth transition for theme colors */
+      transition: background-color 0.3s ease, color 0.3s ease;
     } 
+    
     .blueprint-grid { 
       position: absolute; 
       inset: 0; 
@@ -35,18 +50,22 @@
       background-size: 32px 32px; 
       opacity: 0.15; 
       pointer-events: none; 
+      transition: background-image 0.3s ease;
     } 
+    
     .content-card { 
       position: relative; 
       width: 560px;
       max-width: 90vw; 
       background: var(--surface); 
       border: 1px solid var(--border); 
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); 
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); 
       padding: 48px; 
       text-align: center; 
       z-index: 1; 
+      transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
     } 
+
     .badge { 
       display: inline-flex; 
       align-items: center; 
@@ -62,22 +81,34 @@
       border-radius: 2px; 
       margin-bottom: 24px; 
       background: rgba(16, 185, 129, 0.05); 
+      transition: color 0.3s ease, border-color 0.3s ease;
     } 
+    
     h1 { 
       font-size: 36px; 
       font-weight: 800; 
       margin: 0 0 8px 0; 
       letter-spacing: -0.02em; 
     } 
+
     .version-info { 
       font-size: 18px; 
       color: var(--text-muted); 
       margin-bottom: 40px; 
       font-weight: 400; 
+      transition: color 0.3s ease;
     } 
+    
+    .actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
     .btn-primary { 
       background-color: var(--accent); 
-      color: var(--bg); 
+      color: #ffffff; 
       border: none; 
       font-family: var(--font-sans); 
       font-size: 14px; 
@@ -87,11 +118,34 @@
       cursor: pointer; 
       text-transform: uppercase; 
       letter-spacing: 0.025em; 
-      transition: transform 0.1s; 
+      transition: transform 0.1s, background-color 0.3s ease; 
     } 
     .btn-primary:active { 
       transform: scale(0.98); 
     } 
+    
+    /* Toggle Button Style */
+    .btn-outline {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      font-family: var(--font-sans); 
+      font-size: 14px; 
+      font-weight: 700; 
+      padding: 14px 32px; 
+      border-radius: 4px; 
+      cursor: pointer; 
+      text-transform: uppercase; 
+      letter-spacing: 0.025em; 
+      transition: transform 0.1s, border-color 0.3s ease, color 0.3s ease; 
+    }
+    .btn-outline:active {
+      transform: scale(0.98);
+    }
+    .btn-outline:hover {
+      border-color: var(--text-muted);
+    }
+
     .status-footer { 
       margin-top: 48px; 
       border-top: 1px solid var(--border); 
@@ -99,7 +153,9 @@
       display: flex; 
       justify-content: space-between; 
       align-items: center; 
+      transition: border-color 0.3s ease;
     } 
+    
     .status-item { 
       font-family: var(--font-mono); 
       font-size: 10px; 
@@ -109,13 +165,16 @@
       display: flex; 
       align-items: center; 
       gap: 6px; 
+      transition: color 0.3s ease;
     } 
+    
     .dot { 
       width: 6px; 
       height: 6px; 
       background: var(--accent); 
       border-radius: 50%; 
       box-shadow: 0 0 8px var(--accent); 
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     } 
   </style>
 </head>
@@ -124,8 +183,13 @@
   <main class="content-card">
     <div class="badge">Deployment Probe: Active</div>
     <h1>Testing Vercel Auto-Update</h1>
-    <p class="version-info">Current Version: 1.0</p>
-    <button class="btn-primary" onclick="alert('App is running successfully!')">Check Live Status</button>
+    <p class="version-info">Current Version: 1.1 - Auto Update Successful!</p>
+    
+    <div class="actions">
+      <button class="btn-primary" onclick="alert('App is running successfully!')">Check Live Status</button>
+      <button class="btn-outline" onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+
     <div class="status-footer">
       <div class="status-item">
         <span class="dot"></span> Live Environment
@@ -138,5 +202,12 @@
       </div>
     </div>
   </main>
+
+  <script>
+    function toggleTheme() {
+      // Toggles the "light-mode" class on the body tag
+      document.body.classList.toggle('light-mode');
+    }
+  </script>
 </body>
 </html>
